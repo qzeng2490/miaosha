@@ -2,11 +2,12 @@ package com.imooc.miaosha.service;
 
 import java.util.Date;
 
+import com.imooc.miaosha.dao.OrderInfoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.imooc.miaosha.dao.OrderDao;
+import com.imooc.miaosha.dao.MiaoshaOrderDao;
 import com.imooc.miaosha.domain.MiaoshaOrder;
 import com.imooc.miaosha.domain.MiaoshaUser;
 import com.imooc.miaosha.domain.OrderInfo;
@@ -16,10 +17,13 @@ import com.imooc.miaosha.vo.GoodsVo;
 public class OrderService {
 	
 	@Autowired
-	OrderDao orderDao;
+	MiaoshaOrderDao miaoshaOrderDao;
+
+	@Autowired
+	OrderInfoDao orderInfoDao;
 	
 	public MiaoshaOrder getMiaoshaOrderByUserIdGoodsId(long userId, long goodsId) {
-		return orderDao.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
+		return miaoshaOrderDao.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
 	}
 
 	@Transactional
@@ -34,12 +38,12 @@ public class OrderService {
 		orderInfo.setOrderChannel(1);
 		orderInfo.setStatus(0);
 		orderInfo.setUserId(user.getId());
-		long orderId = orderDao.insert(orderInfo);
+		orderInfo = orderInfoDao.save(orderInfo);
 		MiaoshaOrder miaoshaOrder = new MiaoshaOrder();
 		miaoshaOrder.setGoodsId(goods.getId());
-		miaoshaOrder.setOrderId(orderId);
+		miaoshaOrder.setOrderId(orderInfo.getId());
 		miaoshaOrder.setUserId(user.getId());
-		orderDao.insertMiaoshaOrder(miaoshaOrder);
+		miaoshaOrderDao.save(miaoshaOrder);
 		return orderInfo;
 	}
 	
