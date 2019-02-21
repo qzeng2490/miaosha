@@ -1,0 +1,1 @@
+INSERT INTO test.miaosha_order (id, goods_id, order_id, user_id) VALUES (2, 1, 1, 13710715742);

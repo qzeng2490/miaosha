@@ -1,0 +1,2 @@
+INSERT INTO test.miaosha_goods (id, end_date, goods_id, miaosha_price, start_date, stock_count) VALUES (1, '2019-02-21 11:16:02', 1, 0.01, '2019-02-20 11:11:15', 8);
+INSERT INTO test.miaosha_goods (id, end_date, goods_id, miaosha_price, start_date, stock_count) VALUES (2, '2019-02-21 11:16:27', 2, 0.01, '2019-02-20 11:11:35', 10);

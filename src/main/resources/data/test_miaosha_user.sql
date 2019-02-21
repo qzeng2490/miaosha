@@ -1,0 +1,1 @@
+INSERT INTO test.miaosha_user (id, head, last_login_date, login_count, nickname, password, register_date, salt) VALUES (13710715742, 'head？', '2019-02-21 12:25:08', 1, 'zengq', 'b7797cce01b4b131b433b6acf4add449', '2019-02-21 12:26:36', '1a2b3c4d');

@@ -1,0 +1,1 @@
+INSERT INTO test.order_info (id, create_date, delivery_addr_id, goods_count, goods_id, goods_name, goods_price, order_channel, pay_date, status, user_id) VALUES (1, '2019-02-21 06:22:23', 0, 1, 1, 'iphone', 0.01, 1, null, 0, 13710715742);
