@@ -29,9 +29,9 @@ public interface GoodsVo{
 	Long getId();
 	String getGoodsName();
 //	String getGoodsTitle();
-//	String getGoodsImg();
+	String getGoodsImg();
 //	String getGoodsDetail();
-//	Double getGoodsPrice();
+	Double getGoodsPrice();
 //	Integer getGoodsStock();
 	Double getMiaoshaPrice();
 	Integer getStockCount();

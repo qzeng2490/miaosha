@@ -18,6 +18,7 @@ public class MiaoshaGoods {
 	@Id
 	private Long id;
 	private Long goodsId;
+	private Double miaoshaPrice;
 	private Integer stockCount;
 	private Date startDate;
 	private Date endDate;

@@ -20,6 +20,8 @@ public interface GoodsDao extends CrudRepository<Goods,Long> {
   @Query(value = "select " +
 					"g.id as id, " +
 					"g.goods_name as goodsName, " +
+					"g.goods_img as goodsImg, " +
+					"g.goods_price as goodsPrice, " +
 					"mg.stock_count as stockCount, " +
 					"mg.start_date as startDate, " +
 					"mg.end_date as endDate," +
@@ -28,22 +30,11 @@ public interface GoodsDao extends CrudRepository<Goods,Long> {
 					"on mg.goods_id = g.id",nativeQuery = true)
 	public List<GoodsVo> listGoodsVo();
 
-
-	//	private Long id;
-//	private String goodsName;
-//	private String goodsTitle;
-//	private String goodsImg;
-//	private String goodsDetail;
-//	private Double goodsPrice;
-//	private Integer goodsStock;
-//	private Double miaoshaPrice;
-//	private Integer stockCount;
-//	private Date startDate;
-//	private Date endDate;
-
 	@Query(value = "select " +
 					"g.id as id, " +
 					"g.goods_name as goodsName, " +
+					"g.goods_img as goodsImg, " +
+					"g.goods_price as goodsPrice, " +
 					"mg.stock_count as stockCount, " +
 					"mg.start_date as startDate, " +
 					"mg.end_date as endDate," +
