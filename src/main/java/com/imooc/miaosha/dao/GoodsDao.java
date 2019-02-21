@@ -3,16 +3,14 @@ package com.imooc.miaosha.dao;
 import java.util.List;
 
 import com.imooc.miaosha.domain.Goods;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+
 
 import com.imooc.miaosha.domain.MiaoshaGoods;
 import com.imooc.miaosha.vo.GoodsVo;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
