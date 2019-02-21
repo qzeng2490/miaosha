@@ -56,10 +56,11 @@ public class MiaoshaUserService {
 		String mobile = loginVo.getMobile();
 		String formPass = loginVo.getPassword();
 		//判断手机号是否存在
-		MiaoshaUser user = getById(Long.parseLong(mobile)).get();
-		if(user == null) {
+		Optional<MiaoshaUser> optuser = getById(Long.parseLong(mobile));
+		if(!optuser.isPresent()) {
 			throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
 		}
+		MiaoshaUser user = optuser.get();
 		//验证密码
 		String dbPass = user.getPassword();
 		String saltDB = user.getSalt();
