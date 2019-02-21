@@ -17,6 +17,8 @@ import com.imooc.miaosha.util.MD5Util;
 import com.imooc.miaosha.util.UUIDUtil;
 import com.imooc.miaosha.vo.LoginVo;
 
+import java.util.Optional;
+
 @Service
 public class MiaoshaUserService {
 	
@@ -29,8 +31,8 @@ public class MiaoshaUserService {
 	@Autowired
 	RedisService redisService;
 	
-	public MiaoshaUser getById(long id) {
-		return miaoshaUserDao.getById(id);
+	public Optional<MiaoshaUser> getById(long id) {
+		return miaoshaUserDao.findById(id);
 	}
 	
 
@@ -54,7 +56,7 @@ public class MiaoshaUserService {
 		String mobile = loginVo.getMobile();
 		String formPass = loginVo.getPassword();
 		//判断手机号是否存在
-		MiaoshaUser user = getById(Long.parseLong(mobile));
+		MiaoshaUser user = getById(Long.parseLong(mobile)).get();
 		if(user == null) {
 			throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
 		}
