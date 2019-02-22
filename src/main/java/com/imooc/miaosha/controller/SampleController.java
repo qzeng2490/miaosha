@@ -1,5 +1,6 @@
 package com.imooc.miaosha.controller;
 
+import com.imooc.miaosha.service.MiaoshaUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,6 @@ import com.imooc.miaosha.redis.RedisService;
 import com.imooc.miaosha.redis.UserKey;
 import com.imooc.miaosha.result.CodeMsg;
 import com.imooc.miaosha.result.Result;
-import com.imooc.miaosha.service.UserService;
 
 import java.util.Optional;
 
@@ -19,9 +19,6 @@ import java.util.Optional;
 @RequestMapping("/demo")
 public class SampleController {
 
-	@Autowired
-	UserService userService;
-	
 	@Autowired
 	RedisService redisService;
 	
@@ -42,22 +39,7 @@ public class SampleController {
         model.addAttribute("name", "Joshua");
         return "hello";
     }
-    
-    @RequestMapping("/db/get")
-    @ResponseBody
-    public Result<User> dbGet() {
-    	Optional<User> user = userService.getById(1);
-        return Result.success(user.get());
-    }
-    
-    
-    @RequestMapping("/db/tx")
-    @ResponseBody
-    public Result<Boolean> dbTx() {
-    	userService.tx();
-        return Result.success(true);
-    }
-    
+
     @RequestMapping("/redis/get")
     @ResponseBody
     public Result<User> redisGet() {

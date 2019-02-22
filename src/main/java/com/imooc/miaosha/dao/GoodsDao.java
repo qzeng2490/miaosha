@@ -12,9 +12,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public interface GoodsDao extends CrudRepository<Goods,Long> {
+public interface GoodsDao extends CrudRepository<Goods,Long>{
   @Query(value = "select " +
 					"g.id as id, " +
 					"g.goods_name as goodsName, " +
@@ -43,6 +44,6 @@ public interface GoodsDao extends CrudRepository<Goods,Long> {
 
 	@Modifying
 	@Query(value = "update miaosha_goods set stock_count = stock_count - 1 where goods_id = :goodsId", nativeQuery = true)
-	public int reduceStock(@Param("goodsId") long goodsId);
+	public void reduceStock(@Param("goodsId") long goodsId);
 
 }
