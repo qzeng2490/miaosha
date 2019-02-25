@@ -18,6 +18,9 @@ public class ValidatorUtil {
 	}
 	
 //	public static void main(String[] args) {
+//		String test = "龙岗大队";
+//		int index = test.indexOf("大队");
+//		System.out.println(test.substring(0,index+2));
 //			System.out.println(isMobile("18912341234"));
 //			System.out.println(isMobile("1891234123"));
 //	}

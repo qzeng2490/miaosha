@@ -15,6 +15,8 @@ public interface OrderDao {
 	@SelectKey(keyColumn="id", keyProperty="id", resultType=long.class, before=false, statement="select last_insert_id()")
 	public long insert(OrderInfo orderInfo);
 
+	@Select("select * from order_info where id = #{orderId}")
+	public OrderInfo getOrderById(@Param("orderId")long orderId);
 }
 
 //@Repository
