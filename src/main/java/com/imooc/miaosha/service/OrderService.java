@@ -57,6 +57,8 @@ import com.imooc.miaosha.dao.MiaoshaOrderDao;
 import com.imooc.miaosha.dao.OrderDao;
 import com.imooc.miaosha.redis.OrderKey;
 import com.imooc.miaosha.redis.RedisService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,6 +75,7 @@ public class OrderService {
 
 	private final MiaoshaOrderDao miaoshaOrderDao;
 
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private final RedisService redisService;
 
@@ -108,6 +111,7 @@ public class OrderService {
 		orderInfo.setStatus(0);
 		orderInfo.setUserId(user.getId());
 		long id = orderDao.insert(orderInfo);
+		logger.error("----"+id);
 		MiaoshaOrder miaoshaOrder = new MiaoshaOrder();
 		miaoshaOrder.setGoodsId(goods.getId());
 		miaoshaOrder.setOrderId(id);
