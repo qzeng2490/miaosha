@@ -110,17 +110,23 @@ public class OrderService {
 		orderInfo.setOrderChannel(1);
 		orderInfo.setStatus(0);
 		orderInfo.setUserId(user.getId());
-		long id = orderDao.insert(orderInfo);
-		logger.error("----"+id);
+		orderDao.insert(orderInfo);
 		MiaoshaOrder miaoshaOrder = new MiaoshaOrder();
 		miaoshaOrder.setGoodsId(goods.getId());
-		miaoshaOrder.setOrderId(id);
+		miaoshaOrder.setOrderId(orderInfo.getId());
 		miaoshaOrder.setUserId(user.getId());
 		miaoshaOrderDao.insertMiaoshaOrder(miaoshaOrder);
+
+//		logger.error("---------------"+miaoshaOrder.getId());
 
 		redisService.set(OrderKey.getMiaoshaOrderByUidGid, ""+user.getId()+"_"+goods.getId(), miaoshaOrder);
 
 		return orderInfo;
+	}
+
+	public void deleteOrders() {
+		orderDao.deleteOrders();
+		orderDao.deleteMiaoshaOrders();
 	}
 
 }
